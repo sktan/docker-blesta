@@ -27,6 +27,9 @@ RUN mkdir -p /var/www/html && mkdir -p /run/php && \
 # Add PHP and NGINX configurations
 ADD configs /
 
-EXPOSE 80
+# Generate snake-oil SSL certificate for a year for reverse proxy purposes
+RUN openssl req -subj "/C=AU/ST=NSW/L=Sydney/O=Nginx Web/OU=Proxy/CN=localhost" -new -newkey rsa:2048 -days 730 -nodes -x509 -sha256 -keyout /etc/nginx/localhost.key -out /etc/nginx/localhost.crt
+
+EXPOSE 443
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]

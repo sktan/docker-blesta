@@ -13,7 +13,7 @@ RUN amazon-linux-extras enable php7.3 epel && yum clean metadata && \
 RUN curl -o /tmp/ioncube.zip https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.zip && \
     mkdir -p /tmp/ioncube && unzip /tmp/ioncube.zip -d /usr/lib64/php/modules && \
     echo "zend_extension=ioncube/ioncube_loader_lin_7.3.so" > /etc/php.d/10-php-ioncube.ini && \
-    curl -o /tmp/blesta.zip https://account.blesta.com/client/plugin/download_manager/client_main/download/143/blesta-4.8.1.zip
+    curl -o /tmp/blesta.zip https://account.blesta.com/client/plugin/download_manager/client_main/download/147/blesta-4.9.0.zip
 
 # Setup website folder structure
 RUN mkdir -p /var/www/html && mkdir -p /run/php && \
